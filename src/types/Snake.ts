@@ -1,10 +1,10 @@
 export class Snake {
+  snake: HTMLElement
   head: HTMLElement
   bodies: HTMLCollection
-  snake: HTMLElement
 
   constructor() {
-    this.snake = document.getElementById('#snake')!
+    this.snake = document.getElementById('snake')!
     this.head = document.querySelector('#snake > div')!
     this.bodies = this.snake?.getElementsByTagName('div')
   }

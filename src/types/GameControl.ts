@@ -53,6 +53,8 @@ export class GameControl {
         break
     }
 
+    this.checkEat(x, y)
+
     try {
       this.snake.X = x
       this.snake.Y = y
@@ -65,5 +67,13 @@ export class GameControl {
       setTimeout(() => {
         this.move()
       }, 300 - (this.scrollPanel.level - 1) * 30)
+  }
+
+  checkEat = (x: number, y: number) => {
+    if (x === this.food.X && y === this.food.Y) {
+      this.food.change()
+      this.scrollPanel.addScore()
+      this.snake.addBody()
+    }
   }
 }
