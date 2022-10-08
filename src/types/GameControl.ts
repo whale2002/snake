@@ -53,11 +53,17 @@ export class GameControl {
         break
     }
 
-    this.snake.X = x
-    this.snake.Y = y
+    try {
+      this.snake.X = x
+      this.snake.Y = y
+    } catch (e) {
+      this.isLive = false
+      alert('GAME OVER!')
+    }
 
-    this.isLive && setTimeout(() => {
-      this.move()
-    }, 300 - (this.scrollPanel.level - 1) * 30)
+    this.isLive &&
+      setTimeout(() => {
+        this.move()
+      }, 300 - (this.scrollPanel.level - 1) * 30)
   }
 }
