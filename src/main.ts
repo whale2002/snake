@@ -1,2 +1,5 @@
+import { Food, ScorePanel } from './types'
 import './index.scss'
-import { Food, ScorePanel } from './type'
+
+const food = new Food()
+const scorePanel = new ScorePanel()
