@@ -60,7 +60,7 @@ export class GameControl {
       this.snake.Y = y
     } catch (e) {
       this.isLive = false
-      alert('GAME OVER!')
+      alert(e.message + ' GAME OVER!')
     }
 
     this.isLive &&

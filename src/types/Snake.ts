@@ -35,6 +35,7 @@ export class Snake {
     this.moveBody()
     // 移动头部
     this.head.style.left = value + 'px'
+    this.checkHeadBody()
   }
   set Y(value: number) {
     if (this.Y === value) return
@@ -55,6 +56,7 @@ export class Snake {
     this.moveBody()
     // 移动头部
     this.head.style.top = value + 'px'
+    this.checkHeadBody()
   }
   addBody() {
     this.snake.insertAdjacentHTML('beforeend', '<div></div>')
@@ -66,6 +68,16 @@ export class Snake {
 
       ;(this.bodies[i] as HTMLElement).style.left = x + 'px'
       ;(this.bodies[i] as HTMLElement).style.top = y + 'px'
+    }
+  }
+  checkHeadBody() {
+    for (let i = this.bodies.length - 1; i > 0; i--) {
+      let x = (this.bodies[i] as HTMLElement).offsetLeft
+      let y = (this.bodies[i] as HTMLElement).offsetTop
+
+      if (this.X === x && this.Y === y) {
+        throw new Error('撞到自己了!')
+      }
     }
   }
 }
