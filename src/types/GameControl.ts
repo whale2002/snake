@@ -25,13 +25,13 @@ export class GameControl {
     this.init()
   }
 
-  handleKeyDown = (event: KeyboardEvent) => {
-    this.direction = directionMap[event.key]
-  }
-
   init = () => {
     document.addEventListener('keydown', this.handleKeyDown)
     this.move()
+  }
+
+  handleKeyDown = (event: KeyboardEvent) => {
+    this.direction = directionMap[event.key]
   }
 
   move = () => {
