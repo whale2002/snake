@@ -16,6 +16,7 @@ export class GameControl {
   scrollPanel: ScorePanel
   direction: string = ''
   isLive: boolean = true
+  timer: any = null
 
   constructor() {
     this.snake = new Snake()
@@ -27,10 +28,19 @@ export class GameControl {
 
   init = () => {
     document.addEventListener('keydown', this.handleKeyDown)
-    this.move()
   }
 
   handleKeyDown = (event: KeyboardEvent) => {
+    if (event.key === ' ') {
+      if (this.timer) {
+        clearTimeout(this.timer)
+        this.timer = null
+      } else {
+        this.direction = this.direction || 'Right'
+        this.move()
+      }
+      return
+    }
     this.direction = directionMap[event.key]
   }
 
@@ -63,10 +73,11 @@ export class GameControl {
       alert(e.message + ' GAME OVER!')
     }
 
-    this.isLive &&
-      setTimeout(() => {
+    if (this.isLive) {
+      this.timer = setTimeout(() => {
         this.move()
       }, 300 - (this.scrollPanel.level - 1) * 30)
+    }
   }
 
   checkEat = (x: number, y: number) => {
