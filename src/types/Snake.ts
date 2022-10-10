@@ -21,6 +21,16 @@ export class Snake {
     if (value < 0 || value > 290) {
       throw new Error('蛇撞墙了!')
     }
+    if (
+      this.bodies[1] &&
+      (this.bodies[1] as HTMLElement).offsetLeft === value
+    ) {
+      if (value > this.X) {
+        value = this.X - 10
+      } else {
+        value = this.X + 10
+      }
+    }
     // 移动身体
     this.moveBody()
     // 移动头部
@@ -32,6 +42,15 @@ export class Snake {
     if (value < 0 || value > 290) {
       throw new Error('蛇撞墙了!')
     }
+
+    if (this.bodies[1] && (this.bodies[1] as HTMLElement).offsetTop === value) {
+      if (value > this.Y) {
+        value = this.Y - 10
+      } else {
+        value = this.Y + 10
+      }
+    }
+
     // 移动身体
     this.moveBody()
     // 移动头部
