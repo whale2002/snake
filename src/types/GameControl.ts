@@ -21,7 +21,7 @@ export class GameControl {
   constructor() {
     this.snake = new Snake()
     this.food = new Food()
-    this.scrollPanel = new ScorePanel()
+    this.scrollPanel = new ScorePanel(10, 2)
 
     this.init()
   }
